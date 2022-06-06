@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 
 import { UserModule } from './user/user.module';
 import { NavigationComponent } from './navigation/navigation.component';
-
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   declarations: [AppComponent, NavigationComponent],
-  imports: [BrowserModule, AppRoutingModule, UserModule],
+  imports: [BrowserModule, AppRoutingModule, UserModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })
