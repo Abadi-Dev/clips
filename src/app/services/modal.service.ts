@@ -1,16 +1,30 @@
 import { Injectable } from '@angular/core';
+import { elementAt } from 'rxjs';
 
+interface IModals {
+  id: String;
+  visible: boolean;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class ModalService {
-  private visible = false;
+  private modals: IModals[] = [];
   constructor() {}
 
-  isModalOpen(): boolean {
-    return this.visible;
+  register(id: String) {
+    this.modals.push({ id, visible: false });
   }
-  toggleModal() {
-    this.visible = !this.visible;
+
+  isModalOpen(id: String): boolean {
+    return !!this.modals.find((element) => element.id === id)?.visible;
+    // alternative solution : return Boolean(this.modals.find((element) => element.id === id)?.visible);
+  }
+  toggleModal(id: String): void {
+    const modal = this.modals.find((element) => element.id === id);
+    if (modal) {
+      modal.visible = !modal.visible;
+    }
+    // this.visible = !this.visible;
   }
 }
