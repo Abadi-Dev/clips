@@ -16,6 +16,8 @@ export class ModalService {
     this.modals.push({ id, visible: false });
   }
 
+  unregister(id: String) {}
+
   isModalOpen(id: String): boolean {
     return !!this.modals.find((element) => element.id === id)?.visible;
     // alternative solution : return Boolean(this.modals.find((element) => element.id === id)?.visible);
