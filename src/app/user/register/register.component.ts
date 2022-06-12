@@ -38,6 +38,9 @@ export class RegisterComponent  {
         Validators.maxLength(13)
       ]);
 
+      alertColor = "blue"
+      showAlert = false;
+      alertMsg = 'please wait while your account is being created!'
 
     registerForm = new UntypedFormGroup({
       name:  this.name,
@@ -48,7 +51,8 @@ export class RegisterComponent  {
       phone: this.phone
     });
     register(){
-      console.log('registration is done');
-
+      this.showAlert = true;
+      this.alertColor = "blue";
+      this.alertMsg = 'please wait while your account is being created!'
     }
 }

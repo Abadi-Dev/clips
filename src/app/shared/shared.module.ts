@@ -13,7 +13,7 @@ import { AlertComponent } from './alert/alert.component';
 @NgModule({
   declarations: [ModalComponent, TabsContainerComponent, TabComponent, InputComponent, AlertComponent],
   imports: [CommonModule, ReactiveFormsModule, NgxMaskModule.forRoot()],
-  exports: [ModalComponent, TabComponent, TabsContainerComponent, InputComponent],
+  exports: [ModalComponent, TabComponent, TabsContainerComponent, InputComponent, AlertComponent],
   // providers: [ModalService],
 })
 export class SharedModule {}
