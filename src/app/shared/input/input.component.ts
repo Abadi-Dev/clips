@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { SharedModule } from '../shared.module';
+
 
 
 @Component({
@@ -10,7 +10,8 @@ import { SharedModule } from '../shared.module';
 })
 export class InputComponent implements OnInit {
   @Input() control : FormControl = new FormControl();
-
+  @Input() type = 'text';
+  @Input() placeholder = "";
   constructor() { }
 
   ngOnInit(): void {
