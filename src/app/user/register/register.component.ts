@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validator, Validators  } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validator, Validators  } from '@angular/forms';
 
 
 @Component({
@@ -11,35 +11,35 @@ export class RegisterComponent  {
       // we can put some validators in the template but
       // its better to let angular handle them, and we should choose
       // to put them in the class or the template
-      name  = new FormControl('',[
+      name  = new UntypedFormControl('',[
         Validators.required,
         Validators.minLength(3),
       ]);
-      email = new FormControl('', [
+      email = new UntypedFormControl('', [
         Validators.required,
         Validators.email
       ]);
-      age = new FormControl("",[
+      age = new UntypedFormControl("",[
         Validators.required,
         Validators.min(18),
         Validators.max(120)
       ]);
-      password = new FormControl('',[
+      password = new UntypedFormControl('',[
         Validators.required,
         Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)
       ]
       );
-      confirm_password = new FormControl('',[
+      confirm_password = new UntypedFormControl('',[
         Validators.required,
       ]);
-      phone = new FormControl('',[
+      phone = new UntypedFormControl('',[
         Validators.required,
         Validators.minLength(13),
         Validators.maxLength(13)
       ]);
 
 
-    registerForm = new FormGroup({
+    registerForm = new UntypedFormGroup({
       name:  this.name,
       email: this.email,
       age: this.age,
@@ -47,4 +47,8 @@ export class RegisterComponent  {
       conftirm_password: this.confirm_password,
       phone: this.phone
     });
+    register(){
+      console.log('registration is done');
+
+    }
 }
