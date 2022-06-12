@@ -3,10 +3,11 @@
     <!-- Email -->
     <div class="mb-3">
         <label class="inline-block mb-2">Email</label>
-        <input required pattern="/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g" type="email" name="email" [(ngModel)]='credentials.email' class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+        <input #email="ngModel" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" type="email" name="email" [(ngModel)]='credentials.email' class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
             placeholder="Enter Email" />
         <!-- <input [value]="" (change)=""> -->
     </div>
+    <p *ngIf="email.touched && email.dirty && email.errors" class="text-red-400">Email is inavalid</p>
     <!-- Password -->
     <div class="mb-3">
         <label class="inline-block mb-2">Password</label>
