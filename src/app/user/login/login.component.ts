@@ -11,6 +11,10 @@ export class LoginComponent implements OnInit {
     email : "",
     password: ""
   }
+  register(){
+    console.log('login is done');
+
+  }
 
   constructor() { }
 
