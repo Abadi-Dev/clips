@@ -42,7 +42,7 @@ export class RegisterComponent  {
         Validators.maxLength(13)
       ]);
 
-      alertColor = "blue"
+      alertColor = "red"
       showAlert = false;
       alertMsg = 'please wait while your account is being created!'
 
@@ -55,16 +55,18 @@ export class RegisterComponent  {
       phone: this.phone
     });
     async register(){
-      this.showAlert = true;
-      this.alertColor = "blue";
-      this.alertMsg = 'please wait while your account is being created!'
-
       try {
         const userCred = await this.auth.createUserWithEmailAndPassword(
           this.registerForm.value.email, this.registerForm.value.password
         );
       } catch (error: any) {
-        console.log(error.message)
+        this.alertMsg = error.message;
+        this.alertColor = 'red';
+        this.showAlert = true;
+        return;
       }
+      this.alertMsg = "Registration succesfull!";
+      this.alertColor = 'green';
+      this.showAlert = true;
     }
   }
