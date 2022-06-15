@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl, Validator, Validators  } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { UntypedFormGroup, UntypedFormControl, Validators  } from '@angular/forms';
 
 
 @Component({
@@ -8,6 +9,9 @@ import { UntypedFormGroup, UntypedFormControl, Validator, Validators  } from '@a
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent  {
+      constructor(private auth: AngularFireAuth){
+
+      }
       // we can put some validators in the template but
       // its better to let angular handle them, and we should choose
       // to put them in the class or the template
@@ -50,9 +54,17 @@ export class RegisterComponent  {
       conftirm_password: this.confirm_password,
       phone: this.phone
     });
-    register(){
+    async register(){
       this.showAlert = true;
       this.alertColor = "blue";
       this.alertMsg = 'please wait while your account is being created!'
+
+
+      console.log(this.registerForm.value.email);
+
+      const userCred = await this.auth.createUserWithEmailAndPassword(
+        this.registerForm.value.email, this.registerForm.value.password
+      );
+
     }
-}
+  }
