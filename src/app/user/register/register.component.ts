@@ -59,12 +59,12 @@ export class RegisterComponent  {
       this.alertColor = "blue";
       this.alertMsg = 'please wait while your account is being created!'
 
-
-      console.log(this.registerForm.value.email);
-
-      const userCred = await this.auth.createUserWithEmailAndPassword(
-        this.registerForm.value.email, this.registerForm.value.password
-      );
-
+      try {
+        const userCred = await this.auth.createUserWithEmailAndPassword(
+          this.registerForm.value.email, this.registerForm.value.password
+        );
+      } catch (error: any) {
+        console.log(error.message)
+      }
     }
   }
