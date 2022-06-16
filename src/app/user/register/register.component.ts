@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UntypedFormGroup, UntypedFormControl, Validators  } from '@angular/forms';
-
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +10,7 @@ import { UntypedFormGroup, UntypedFormControl, Validators  } from '@angular/form
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent  {
-      constructor(){
+      constructor(private auth: AuthService){
       }
       // we can put some validators in the template but
       // its better to let angular handle them, and we should choose
@@ -47,7 +47,16 @@ export class RegisterComponent  {
       alertMsg = 'please wait while your account is being created!'
       showSumbitButton = true;
 
-    registerForm = new UntypedFormGroup({
+      // interface IRegisterForm {
+      //   name:  string,
+      //   email: string,
+      //   age: number,
+      //   password: string,
+      //   conftirm_password: string,
+      //   phone: number
+      // }
+
+    registerForm = new UntypedFormGroup ({
       name:  this.name,
       email: this.email,
       age: this.age,
@@ -58,6 +67,7 @@ export class RegisterComponent  {
     async register(){
       this.showSumbitButton=false;
       try {
+        await this.auth.createUser(this.registerForm.value)
       } catch (error: any) {
         this.alertMsg = error.message;
         this.alertColor = 'red';
