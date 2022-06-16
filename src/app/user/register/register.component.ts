@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UntypedFormGroup, UntypedFormControl, Validators  } from '@angular/forms';
 
 
@@ -9,8 +10,7 @@ import { UntypedFormGroup, UntypedFormControl, Validators  } from '@angular/form
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent  {
-      constructor(private auth: AngularFireAuth){
-
+      constructor(private auth: AngularFireAuth , private db: AngularFirestore){
       }
       // we can put some validators in the template but
       // its better to let angular handle them, and we should choose
@@ -61,6 +61,12 @@ export class RegisterComponent  {
         const userCred = await this.auth.createUserWithEmailAndPassword(
           this.registerForm.value.email, this.registerForm.value.password
         );
+        await this.db.collection('users').add({
+          name:  this.name.value,
+          email: this.email.value,
+          age: this.age.value,
+          phone: this.phone.value
+        })
       } catch (error: any) {
         this.alertMsg = error.message;
         this.alertColor = 'red';
