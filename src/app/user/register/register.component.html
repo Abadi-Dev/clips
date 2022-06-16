@@ -36,5 +36,5 @@
         <label class="inline-block mb-2">Phone Number</label>
         <app-input [control]="phone" format="(000)000-0000" placeholder="Enter phone number"></app-input>
     </div>
-    <button type="submit" [disabled]="registerForm.invalid" class="disabled:opacity-40 disabled:bg-indigo-400 block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500">Submit</button>
+    <button type="submit" [disabled]="registerForm.invalid || !showSumbitButton" class="disabled:opacity-40 disabled:bg-indigo-400 block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500">Submit</button>
 </form>

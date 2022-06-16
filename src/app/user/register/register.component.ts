@@ -45,6 +45,7 @@ export class RegisterComponent  {
       alertColor = "red"
       showAlert = false;
       alertMsg = 'please wait while your account is being created!'
+      showSumbitButton = true;
 
     registerForm = new UntypedFormGroup({
       name:  this.name,
@@ -55,6 +56,7 @@ export class RegisterComponent  {
       phone: this.phone
     });
     async register(){
+      this.showSumbitButton=false;
       try {
         const userCred = await this.auth.createUserWithEmailAndPassword(
           this.registerForm.value.email, this.registerForm.value.password
@@ -63,10 +65,12 @@ export class RegisterComponent  {
         this.alertMsg = error.message;
         this.alertColor = 'red';
         this.showAlert = true;
+        this.showSumbitButton = true;
         return;
       }
-      this.alertMsg = "Registration succesfull!";
+      this.alertMsg = "Success! your account has ben created";
       this.alertColor = 'green';
       this.showAlert = true;
+      this.showSumbitButton = true;
     }
   }
