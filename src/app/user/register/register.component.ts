@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Component } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators  } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -46,15 +44,6 @@ export class RegisterComponent  {
       showAlert = false;
       alertMsg = 'please wait while your account is being created!'
       showSumbitButton = true;
-
-      // interface IRegisterForm {
-      //   name:  string,
-      //   email: string,
-      //   age: number,
-      //   password: string,
-      //   conftirm_password: string,
-      //   phone: number
-      // }
 
     registerForm = new UntypedFormGroup ({
       name:  this.name,
