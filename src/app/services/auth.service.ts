@@ -21,11 +21,19 @@ export class AuthService {
     const userCred = await this.auth.createUserWithEmailAndPassword(
         userData.email, userData.password
     );
-    await this.userCollection.add({
+
+      if(!userCred.user)
+        throw new Error("User not Found!");
+
+
+    await this.userCollection.doc(userCred.user.uid).set({
       name:  userData.name,
       email: userData.email,
       age: userData.age,
       phone: userData.phone
+    })
+    await userCred.user.updateProfile({
+      displayName : userData.name
     })
   }
 }
