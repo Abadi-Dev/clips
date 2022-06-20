@@ -8,10 +8,7 @@ import { ModalService } from '../services/modal.service';
   styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent implements OnInit {
-
-  constructor(public modal: ModalService, public auth : AuthService) {
-
-  }
+  constructor(public modal: ModalService, public auth: AuthService) {}
 
   ngOnInit(): void {}
 
