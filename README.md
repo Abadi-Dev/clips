@@ -1,27 +1,21 @@
-# Clips
+Clips is a project for sharing gaming highlights, users will be able to upload and share and watch
+gaming highlights.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
+the project is being built with angular and firebase and tailwindCSS.
 
-## Development server
+tasks done:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- bootsrapping angular
+- typeScript
+- components fundamentals
+- transforming content
+- component design
+- reactive forms
+- template forms
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+tasks to to do:
+- authentication
+- routing
+- uploading files
+- video processing
+- deployment
