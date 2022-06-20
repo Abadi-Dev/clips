@@ -4,13 +4,14 @@ gaming highlights.
 the project is being built with angular and firebase and tailwindCSS.
 
 tasks done:
--bootsrapping angular
--typeScript
--components fundamentals
--transforming content
--component design
--reactive forms
--template forms
+
+- bootsrapping angular
+- typeScript
+- components fundamentals
+- transforming content
+- component design
+- reactive forms
+- template forms
 
 tasks to to do:
 - authentication
