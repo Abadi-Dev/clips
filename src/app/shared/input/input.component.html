@@ -13,4 +13,6 @@
     <p class="text-red-400" *ngIf="control.errors?.max">value too high</p>
     <!-- for the password pattern -->
     <p class="text-red-400" *ngIf="control.errors?.pattern">Enter a secure password please</p>
+    <!-- For the password match -->
+    <p class="text-red-400" *ngIf="control.errors?.noMatch">passwords do not match</p>
 </ng-container>
