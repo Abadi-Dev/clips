@@ -5,14 +5,16 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { EmailTaken } from '../Validators/email-taken';
 import { RegisterValidator } from '../Validators/register-validator';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private emailTaken: EmailTaken) {}
   // we can put some validators in the template but
   // its better to let angular handle them, and we should choose
   // to put them in the class or the template
@@ -20,7 +22,11 @@ export class RegisterComponent {
     Validators.required,
     Validators.minLength(3),
   ]);
-  email = new UntypedFormControl('', [Validators.required, Validators.email]);
+  email = new UntypedFormControl(
+    '',
+    [Validators.required, Validators.email],
+    [this.emailTaken.validate]
+  );
   age = new UntypedFormControl('', [
     Validators.required,
     Validators.min(18),

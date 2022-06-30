@@ -6,6 +6,7 @@
     <!-- for fields with the min length -->
     <p class="text-red-400" *ngIf="control.errors?.minlength">The value you inputted is {{control.errors?.minlength.actualLength}} Characters long it must be at least {{control.errors?.minlength.requiredLength}} Characters long.</p>
     <!-- for the email field -->
+    <p class="text-red-400" *ngIf="control.errors?.emailTaken">Email is taken, try another email</p>
     <p class="text-red-400" *ngIf="control.errors?.email">You must enter a valid email</p>
     <!-- if the age is below 18 -->
     <p class="text-red-400" *ngIf="control.errors?.min">value too low</p>

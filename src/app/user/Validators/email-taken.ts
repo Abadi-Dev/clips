@@ -5,11 +5,10 @@ import {
   AsyncValidator,
   ValidationErrors,
 } from '@angular/forms';
-import { promises } from 'dns';
-import { Http2ServerRequest } from 'http2';
-import { Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class EmailTaken implements AsyncValidator {
   constructor(private auth: AngularFireAuth) {}
 
