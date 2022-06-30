@@ -6,7 +6,8 @@ export class RegisterValidator {
     if (!matchingControl || !control) {
       return { controlNotFound: false };
     }
-    const error = matchingControl === control ? null : { noMatch: true };
+    const error =
+      matchingControl.value === control.value ? null : { noMatch: true };
     return error;
   }
 }
