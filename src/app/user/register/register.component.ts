@@ -51,7 +51,7 @@ export class RegisterComponent {
       confirm_password: this.confirm_password,
       phone: this.phone,
     },
-    [RegisterValidator.match]
+    [RegisterValidator.match('password', 'confirm_password')]
   );
   async register() {
     this.showSumbitButton = false;
