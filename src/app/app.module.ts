@@ -10,10 +10,11 @@ import { SharedModule } from './shared/shared.module';
 import {AngularFireModule} from "@angular/fire/compat"
 import { environment } from 'src/environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth/'
-import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/compat/firestore'
+import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { HomeComponent } from './home/home.component'
 
 @NgModule({
-  declarations: [AppComponent, NavigationComponent],
+  declarations: [AppComponent, NavigationComponent, HomeComponent],
   imports: [BrowserModule, AppRoutingModule, UserModule, SharedModule, AngularFireModule.initializeApp(environment.firebase), AngularFireAuthModule, AngularFirestoreModule],
   providers: [],
   bootstrap: [AppComponent],
