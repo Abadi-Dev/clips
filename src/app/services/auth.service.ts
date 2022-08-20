@@ -5,7 +5,7 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { map, Observable, delay, filter } from 'rxjs';
+import { map, Observable, delay, filter, switchMap, of } from 'rxjs';
 import IUser from '../models/user.model';
 
 @Injectable({
@@ -15,6 +15,7 @@ export class AuthService {
   private userCollection: AngularFirestoreCollection<IUser>;
   public isAuthenticated$: Observable<boolean>;
   public isAuthenticatedWithDelay$: Observable<boolean>;
+  private redirect = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,9 +30,12 @@ export class AuthService {
       })
     );
     this.isAuthenticatedWithDelay$ = this.isAuthenticated$.pipe(delay(1000));
+
     this.router.events
-      .pipe(filter((e) => e instanceof NavigationEnd))
-      .subscribe(console.log);
+      .pipe(filter((e) => e instanceof NavigationEnd), map(e => this.route.firstChild), switchMap(route => route?.data ?? of({})))
+      .subscribe(data => {
+        this.redirect = data.authOnly ?? false
+      });
   }
 
   public async createUser(userData: IUser) {
@@ -56,9 +60,14 @@ export class AuthService {
       displayName: userData.name,
     });
   }
-  public async logout($event: Event) {
-    $event.preventDefault();
+  public async logout($event?: Event) {
+    if ($event) {
+      $event.preventDefault();
+    }
     await this.auth.signOut();
-    await this.router.navigateByUrl('/');
+    if (this.redirect) {
+      await this.router.navigateByUrl('/');
+      $event?.preventDefault()
+    }
   }
 }

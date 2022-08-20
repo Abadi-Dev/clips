@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private auth: AngularFireAuth) {}
+  constructor(private auth: AngularFireAuth) { }
   credentials = {
     email: '',
     password: '',
@@ -39,8 +39,7 @@ export class LoginComponent implements OnInit {
     this.showAlert = true;
     this.showSumbitButton = true;
     this.alertMsg = 'logged in';
-    console.log('login is done');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
