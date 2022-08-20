@@ -24,6 +24,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     NavigationComponent,
     HomeComponent,
     AboutComponent,
+    ClipComponent,
   ],
   imports: [
     BrowserModule,
