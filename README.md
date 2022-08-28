@@ -12,10 +12,11 @@ tasks done:
 - component design
 - reactive forms
 - template forms
-
-tasks to to do:
 - authentication
 - routing
+
+tasks to to do:
+
 - uploading files
 - video processing
 - deployment
