@@ -7,7 +7,7 @@ tasks done:
 
 - bootsrapping angular
 - typeScript
-- components fundamentals
+- learning about components
 - transforming content
 - component design
 - reactive forms
