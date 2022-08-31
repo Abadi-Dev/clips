@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormControl, FormGroup, RequiredValidator, Validators } from '@angular/forms';
 import { v4 as uuid } from "uuid";
 @Component({
@@ -11,6 +12,11 @@ export class UploadComponent implements OnInit {
   isDragover = false;
   file: File | null = null;
   nextStep = false;
+  //for alert component
+  showAlert = false;
+  alertMsg = 'Please wait while your clip is being uploaded.'
+  alertColor = 'blue';
+  inSubmission = false;
 
 
   title = new FormControl('', {
@@ -26,7 +32,7 @@ export class UploadComponent implements OnInit {
   })
 
 
-  constructor() { }
+  constructor(private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
   }
@@ -35,7 +41,7 @@ export class UploadComponent implements OnInit {
     this.isDragover = false;
     this.file = ($event as DragEvent).dataTransfer?.files.item(0) ?? null
 
-    if (!this.file || this.file.type !== 'image/png') {
+    if (!this.file || this.file.type !== 'video/mp4') {
       return
     }
     this.title.setValue(
@@ -45,7 +51,16 @@ export class UploadComponent implements OnInit {
   }
 
   uploadFile() {
-    // const cl
-    // const clipPath = `clips/${this.file?.name}`;
+    this.showAlert = true;
+    this.alertMsg = 'Please wait while your clip is being uploaded.'
+    this.alertColor = 'blue';
+    this.inSubmission = true;
+
+
+    const clipFileName = uuid()
+    const clipPath = `clips/${clipFileName}.mp4`;
+
+    this.storage.upload(clipPath, this.file)
+
   }
 }
