@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadComponent implements OnInit {
 
+  isDragover = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  storeFile($event: Event) {
+    this.isDragover = false;
   }
 
 }
