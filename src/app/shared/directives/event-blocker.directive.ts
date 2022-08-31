@@ -7,7 +7,7 @@ export class EventBlockerDirective {
 
   @HostListener('drop', ['$event'])
   @HostListener('dragover', ['$event'])
-  public handleEvent() {
+  public handleEvent(event: Event) {
     event?.preventDefault()
   }
 
