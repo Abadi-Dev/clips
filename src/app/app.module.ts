@@ -17,7 +17,7 @@ import {
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { VideoModule } from './video/video.module';
-
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +34,9 @@ import { VideoModule } from './video/video.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
     VideoModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

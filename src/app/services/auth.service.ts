@@ -31,7 +31,6 @@ export class AuthService {
     this.isAuthenticatedWithDelay$ = this.isAuthenticated$.pipe(delay(1000));
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
-      .subscribe(console.log);
   }
 
   public async createUser(userData: IUser) {
