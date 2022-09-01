@@ -32,14 +32,10 @@ export class AuthService {
     this.isAuthenticatedWithDelay$ = this.isAuthenticated$.pipe(delay(1000));
 
     this.router.events
-<<<<<<< master
-      .pipe(filter((e) => e instanceof NavigationEnd))
-=======
       .pipe(filter((e) => e instanceof NavigationEnd), map(e => this.route.firstChild), switchMap(route => route?.data ?? of({})))
       .subscribe(data => {
         this.redirect = data.authOnly ?? false
       });
->>>>>>> add redirection if the user is not authenticated
   }
 
   public async createUser(userData: IUser) {

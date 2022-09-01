@@ -24,10 +24,7 @@ const routes: Routes = [
       authGuardPipe: redirectUnauthorizedToHome
     },
     canActivate: [AngularFireAuthGuard]
-  },
-      authOnly: true,
-    },
-  },
+  }
 ];
 
 @NgModule({
