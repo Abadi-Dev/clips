@@ -24,6 +24,15 @@ const routes: Routes = [
       authGuardPipe: redirectUnauthorizedToHome
     },
     canActivate: [AngularFireAuthGuard]
+  },
+  {
+    path: 'upload',
+    component: UploadComponent,
+    data: {
+      authOnly: true,
+      authGuardPipe: redirectUnauthorizedToHome
+    },
+    canActivate: [AngularFireAuthGuard]
   }
 ];
 
