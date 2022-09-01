@@ -7,15 +7,16 @@ tasks done:
 
 - bootsrapping angular
 - typeScript
-- components fundamentals
+- learning about components
 - transforming content
 - component design
 - reactive forms
 - template forms
-
-tasks to to do:
 - authentication
 - routing
+
+tasks to to do:
+
 - uploading files
 - video processing
 - deployment

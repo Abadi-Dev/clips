@@ -18,16 +18,19 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { VideoModule } from './video/video.module';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ClipComponent } from './clip/clip.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     HomeComponent,
     AboutComponent,
+    ClipComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     UserModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebase),
